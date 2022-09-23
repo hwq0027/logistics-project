@@ -25,7 +25,7 @@
 
     <dependencyManagement>
         <dependencies>
-            <!--非礼勿视宿舍的方式啊s-->
+            <!--非礼勿视宿撒地方舍的方式啊s-->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
