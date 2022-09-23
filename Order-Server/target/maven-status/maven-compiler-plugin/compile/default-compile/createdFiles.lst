@@ -1,0 +1,11 @@
+cn\hwq\order\service\InventoryService.class
+cn\hwq\order\mapper\OrderMapper.class
+cn\hwq\order\OrderApplication.class
+cn\hwq\order\service\impl\InventoryServiceImpl.class
+cn\hwq\order\mapper\InventoryMapper.class
+cn\hwq\order\controller\OrderController.class
+cn\hwq\order\filter\MvcConfig.class
+cn\hwq\order\filter\LoginInterceptor.class
+cn\hwq\order\service\OrderService.class
+cn\hwq\order\utils\RedisIdWorker.class
+cn\hwq\order\service\impl\OrderServiceImpl.class

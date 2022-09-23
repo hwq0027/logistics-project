@@ -1,0 +1,35 @@
+server:
+  port: 6200
+spring:
+  application:
+    name: logistics-security
+  datasource:
+    url: jdbc:mysql://101.34.103.51:3306/ls_db_user?Unicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2B8
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 123456
+    type: com.alibaba.druid.pool.DruidDataSource #更换为指定连接池
+  redis:
+    host: 101.34.103.51
+    port: 6379
+    password: hwq666
+    lettuce:
+      pool:
+        max-active: 8
+        max-idle: 8
+        min-idle: 0
+        max-wait: 100ms
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 101.34.103.51:8848
+
+logging:
+  level:
+    cn:
+      hwq: trace
+  pattern:
+    file: '%d{yyyy-MM-dd hh:mm:ss} 线程: [%thread] 级别: %-5level 位置: %logger{50} 信息: %msg%n'
+    console: '%d{yyyy-MM-dd hh:mm:ss} 线程: [%thread] 级别: %-5level 位置: %logger{50} 信息: %msg%n'
+  file:
+    path: D:\Study\LearningSoftWare\Spring\MyWork\freemarker\src\main\resources\log

@@ -1,0 +1,13 @@
+cn\hwq\redis\utils\RedisConstants.class
+cn\hwq\pojo\Inventory.class
+cn\hwq\pojo\TmsMenu.class
+cn\hwq\redis\utils\UserLoginUtil.class
+cn\hwq\jwt\JwtUtil.class
+cn\hwq\pojo\CustomerInfo.class
+cn\hwq\feign\CSFeign.class
+cn\hwq\vo\Result.class
+cn\hwq\pojo\Customer.class
+cn\hwq\redis\config\RedisConfig.class
+cn\hwq\redis\utils\RedisValue.class
+cn\hwq\redis\utils\RedisIdWorker.class
+cn\hwq\pojo\Order.class

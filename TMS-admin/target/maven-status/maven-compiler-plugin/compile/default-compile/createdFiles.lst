@@ -1,0 +1,6 @@
+cn\tms\TMSAdminApplicaton.class
+cn\tms\mapper\TmsMenuMapper.class
+cn\tms\service\TmsMenuService.class
+cn\tms\config\InterceptorConfig.class
+cn\tms\controller\TmsMenuController.class
+cn\tms\service\impl\TmsMenuServiceImpl.class

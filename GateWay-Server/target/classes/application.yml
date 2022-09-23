@@ -1,0 +1,40 @@
+server:
+  port: 7200
+spring:
+  application:
+    name: logistics-server
+  datasource:
+    url: jdbc:mysql://101.34.103.51:3306/ls_db_user?Unicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2B8
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 123456
+    type: com.alibaba.druid.pool.DruidDataSource #更换为指定连接池
+  redis:
+    host: 101.34.103.51
+    port: 6379
+    password: hwq666
+    lettuce:
+      pool:
+        max-active: 8
+        max-idle: 8
+        min-idle: 0
+        max-wait: 100ms
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 101.34.103.51:8848
+    gateway:
+      routes:
+        - id: customerManagement-server # 路由标示，必须唯一
+          uri: lb://customerManagement-server # 路由的目标地址
+          predicates: # 路由断言，判断请求是否符合规则
+            - Path=/hwq/** # 路径断言，判断路径是否是以/user开头，如果是则符合,必须和类的requestmaping一直
+          filters:
+            - RewritePath=/hwq/(?<segment>.*), /$\{segment}
+
+        - id: Order-server # 路由标示，必须唯一
+          uri: lb://Order-server # 路由的目标地址
+          predicates: # 路由断言，判断请求是否符合规则
+            - Path=/order/** # 路径断言，判断路径是否是以/user开头，如果是则符合,必须和类的requestmaping一直
+#          filters:
+#            - RewritePath=/hwq/(?<segment>.*), /$\{segment}
