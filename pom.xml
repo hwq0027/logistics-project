@@ -25,7 +25,7 @@
 
     <dependencyManagement>
         <dependencies>
-            <!--非礼勿视s-->
+            <!--非礼勿视宿舍s-->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
