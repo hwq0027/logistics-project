@@ -1,4 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: cn.hwq.Test01
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.096 s - in cn.hwq.Test01
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.72 s <<< FAILURE! - in cn.hwq.Test01
+testSuggestion  Time elapsed: 0.717 s  <<< ERROR!
+cn.hutool.json.JSONException: A JSONObject text must begin with '{' at 1 [character 2 line 1]
+	at cn.hwq.Test01.testSuggestion(Test01.java:38)
+

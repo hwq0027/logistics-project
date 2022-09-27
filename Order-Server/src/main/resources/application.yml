@@ -19,6 +19,22 @@ spring:
     username: root
     password: 123456
     type: com.alibaba.druid.pool.DruidDataSource #更换为指定连接池
+  rabbitmq:
+    host: 101.34.103.51
+    port: 5672
+    username: root
+    password: 123456
+    virtual-host: /
+    listener:
+      simple:
+        prefetch: 1 # 每次只能获取一条消息，处理完成才能获取下一个消息
+        retry:
+          enabled: true # 开启消费者失败重试
+          initial-interval: 1000 # 初识的失败等待时长为1秒
+          multiplier: 3 # 失败的等待时长倍数，下次等待时长 = multiplier * last-interval
+          max-attempts: 3 # 最大重试次数,默认3次
+          stateless: true # true无状态；false有状态。如果业务中包含事务，这里改为false
+
   cloud:
     nacos:
       discovery:

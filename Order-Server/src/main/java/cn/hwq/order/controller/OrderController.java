@@ -27,10 +27,16 @@ public class OrderController {
     OrderServiceImpl OrderServiceImpl;
 
     @RequestMapping("/SaveOrderService")
-    @ResponseBody
     public Result SaveOrderService(@RequestBody Order order){
         System.out.println("卧槽我进来了!!");
+
         return OrderServiceImpl.SaveOrderService(order);
+    }
+
+    @RequestMapping("/findAllOrder")
+    public Result findAllOrder(){
+
+        return Result.ok(OrderServiceImpl.list());
     }
 
 }
