@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.docker.mapper.TbTaskTransportMapper">
+    <resultMap id="BaseResultMap" type="com.docker.pojo.TbTaskTransport">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="transport_trips_id" jdbcType="VARCHAR" property="transportTripsId" />
+        <result column="start_agency_id" jdbcType="VARCHAR" property="startAgencyId" />
+        <result column="end_agency_id" jdbcType="VARCHAR" property="endAgencyId" />
+        <result column="status" jdbcType="INTEGER" property="status" />
+        <result column="assigned_status" jdbcType="INTEGER" property="assignedStatus" />
+        <result column="loading_status" jdbcType="INTEGER" property="loadingStatus" />
+        <result column="truck_id" jdbcType="VARCHAR" property="truckId" />
+        <result column="cargo_pick_up_picture" jdbcType="VARCHAR" property="cargoPickUpPicture" />
+        <result column="cargo_picture" jdbcType="VARCHAR" property="cargoPicture" />
+        <result column="transport_certificate" jdbcType="VARCHAR" property="transportCertificate" />
+        <result column="deliver_picture" jdbcType="VARCHAR" property="deliverPicture" />
+        <result column="delivery_latitude" jdbcType="VARCHAR" property="deliveryLatitude" />
+        <result column="delivery_longitude" jdbcType="VARCHAR" property="deliveryLongitude" />
+        <result column="deliver_latitude" jdbcType="VARCHAR" property="deliverLatitude" />
+        <result column="deliver_longitude" jdbcType="VARCHAR" property="deliverLongitude" />
+        <result column="plan_departure_time" jdbcType="DATETIME" property="planDepartureTime" />
+        <result column="actual_departure_time" jdbcType="DATETIME" property="actualDepartureTime" />
+        <result column="plan_arrival_time" jdbcType="DATETIME" property="planArrivalTime" />
+        <result column="actual_arrival_time" jdbcType="DATETIME" property="actualArrivalTime" />
+        <result column="plan_pick_up_goods_time" jdbcType="DATETIME" property="planPickUpGoodsTime" />
+        <result column="actual_pick_up_goods_time" jdbcType="DATETIME" property="actualPickUpGoodsTime" />
+        <result column="plan_delivery_time" jdbcType="DATETIME" property="planDeliveryTime" />
+        <result column="actual_delivery_time" jdbcType="DATETIME" property="actualDeliveryTime" />
+        <result column="create_time" jdbcType="DATETIME" property="createTime"/>
+        <association property="pdTruck" javaType="com.docker.pojo.PdTruck"
+        column="truck_id" select="com.docker.mapper.PdTruckMapper.selectBytid">
+<!--            <id property="id" column="id"/>-->
+<!--            <result property="truckTypeId" column="truck_type_id"/>-->
+<!--            <result property="fleetId" column="fleet_id"/>-->
+<!--            <result property="brand" column="brand"/>-->
+<!--            <result property="licensePlate" column="license_plate"/>-->
+<!--            <result property="deviceGpsId" column="device_gps_id"/>-->
+<!--            <result property="allowableLoad" column="allowable_load"/>-->
+<!--            <result property="allowableVolume" column="allowable_volume"/>-->
+<!--            <result property="truckLicenseId" column="truck_license_id"/>-->
+<!--            <result property="status" column="status"/>-->
+        </association>
+        <association property="pdTransportTripsTruckDriver"
+                     javaType="com.docker.pojo.PdTransportTripsTruckDriver"
+                     column="{parm1=truck_id,parm2=transport_trips_id}"
+                     select="com.docker.mapper.PdTransportTripsTruckDriverMapper.findtruckdirve">
+        </association>
+    </resultMap>
+
+
+    <select id="Query" parameterType="Map" resultMap="BaseResultMap">
+              select * from ls_db_user.tb_task_transport a
+          inner join ls_db_base .pd_truck  truck  on truck.id=a.truck_id
+          inner join  ls_db_base.pd_transport_trips_truck_driver d on d.truck_id=a.truck_id
+        and d.transport_trips_id=a.transport_trips_id
+        inner join ls_db_user.`pd_auth_user` p on p.`id`=d.user_id
+        <where>
+            <if test="id!=null and id!=0 and id!='null'">
+                and a.id like "%" #{id} "%"
+            </if>
+            <if test="name!=null and name!='' and name!='null'">
+                p.name like "%" #{name} "%"
+            </if>
+            <if test="status!=null and status!=0 and status!='null'">
+                a.`status`= #{status}
+            </if>
+        </where>
+
+    </select>
+
+</mapper>

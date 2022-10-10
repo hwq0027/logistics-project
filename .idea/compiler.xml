@@ -10,9 +10,10 @@
         <module name="logistics-security" />
         <module name="public-resource" />
         <module name="CustomerManagement" />
+        <module name="TMS-Docker" />
         <module name="GateWay-Server" />
-        <module name="TMS-admin" />
         <module name="Order-Server" />
+        <module name="TMS-admin" />
       </profile>
     </annotationProcessing>
   </component>
@@ -21,6 +22,7 @@
       <module name="CustomerManagement" options="-parameters" />
       <module name="GateWay-Server" options="-parameters" />
       <module name="Order-Server" options="-parameters" />
+      <module name="TMS-Docker" options="-parameters" />
       <module name="TMS-admin" options="-parameters" />
       <module name="logistics-project" options="-parameters" />
       <module name="logistics-security" options="-parameters" />

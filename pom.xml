@@ -15,6 +15,7 @@
         <module>logistics-security</module>
         <module>Order-Server</module>
         <module>TMS-admin</module>
+        <module>TMS-Docker</module>
     </modules>
 
     <parent>
